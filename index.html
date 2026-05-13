@@ -37,12 +37,35 @@
       .back-to-hub { top: 8px; left: 8px; padding: 6px 14px; font-size: 12px; }
       body { padding-top: 46px !important; }
     }
+
+    /* 📈 Summary Button (matches the action area styling) */
+    .btn-summary {
+      padding: 9px 16px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #fff;
+      font-size: 14px;
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform .2s, opacity .2s;
+    }
+    .btn-summary:hover {
+      opacity: .9;
+      transform: translateY(-1px);
+      color: #fff;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
 
-  <!-- 🏠 Back to Hub Button -->
-  <a href="https://mahiya98.github.io/Dashboard/" class="back-to-hub" title="Back to Dashboard Hub">
+  <!-- 🏠 Back to Hub Button — UPDATED URL -->
+  <a href="https://mahiya98.github.io/summary/" class="back-to-hub" title="Back to Dashboard Hub">
     ← Back to Hub
   </a>
 
@@ -76,6 +99,10 @@
     <div class="actions">
       <button id="resetBtn" class="btn btn-grey">⟳ Reset</button>
       <button id="excelBtn" class="btn btn-orange">⬇ Excel Download</button>
+      <!-- 📈 NEW Summary Button -->
+      <a href="https://mahiya98.github.io/summary/" class="btn-summary" title="Open Summary Report">
+        📈 Summary
+      </a>
     </div>
   </section>
 
