@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breakdown / Downtime Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* 🏠 Back to Hub Button */
+    .back-to-hub {
+      position: fixed;
+      top: 14px;
+      left: 14px;
+      z-index: 99999;
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: #fff !important;
+      padding: 8px 18px;
+      border-radius: 30px;
+      text-decoration: none !important;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .back-to-hub:hover {
+      transform: translateX(-3px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+    }
+    body { padding-top: 56px !important; }
+    @media (max-width: 600px) {
+      .back-to-hub { top: 8px; left: 8px; padding: 6px 14px; font-size: 12px; }
+      body { padding-top: 46px !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🏠 Back to Hub Button -->
+  <a href="https://mahiya98.github.io/Dashboard/" class="back-to-hub" title="Back to Dashboard Hub">
+    ← Back to Hub
+  </a>
+
+  <header class="topbar">
+    <h1>⚙️ Breakdown / Downtime Dashboard</h1>
+    <span id="status" class="status">Loading…</span>
+  </header>
+
+  <!-- 4 FILTERS -->
+  <section class="filters">
+    <div class="field" id="sbuField">
+      <label>SBU</label>
+      <select id="filterSBU"><option value="">Select All</option></select>
+    </div>
+    <div class="field">
+      <label>Shop Floor</label>
+      <select id="filterShop"><option value="">Select All</option></select>
+    </div>
+    <div class="field">
+      <label>Mill Name</label>
+      <select id="filterMill"><option value="">Select All</option></select>
+    </div>
+    <div class="field">
+      <label>From Date</label>
+      <input type="date" id="fromDate" />
+    </div>
+    <div class="field">
+      <label>To Date</label>
+      <input type="date" id="toDate" />
+    </div>
+    <div class="actions">
+      <button id="resetBtn" class="btn btn-grey">⟳ Reset</button>
+      <button id="excelBtn" class="btn btn-orange">⬇ Excel Download</button>
+    </div>
+  </section>
+
+  <!-- SUMMARY CARDS -->
+  <section class="cards">
+    <div class="card"><div class="card-label">Total Records</div><div class="card-value" id="cCount">0</div></div>
+    <div class="card"><div class="card-label">Total Downtime (min)</div><div class="card-value" id="cDowntime">0</div></div>
+    <div class="card"><div class="card-label">Avg Downtime / Record</div><div class="card-value" id="cAvg">0</div></div>
+    <div class="card"><div class="card-label">Unique Breakdown Types</div><div class="card-value" id="cTypes">0</div></div>
+    <div class="card"><div class="card-label">Top Breakdown Type</div><div class="card-value" id="cTopType" style="font-size:15px;">—</div></div>
+    <div class="card"><div class="card-label">Top Reason</div><div class="card-value" id="cTopReason" style="font-size:15px;">—</div></div>
+  </section>
+
+  <!-- DATA TABLE -->
+  <section class="table-wrap">
+    <table id="dataTable">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Product Criteria</th>
+          <th>Shift</th>
+          <th>Mill Name</th>
+          <th>Breakdown Type</th>
+          <th>Breakdown Name</th>
+          <th>Reason</th>
+          <th>Downtime (min)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
